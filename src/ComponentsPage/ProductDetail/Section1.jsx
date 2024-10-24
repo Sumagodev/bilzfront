@@ -6,13 +6,48 @@ import Product from '../../Assets/Images/ProductDetail/Product.png'
 import Card from 'react-bootstrap/Card';
 import { FaChevronDown } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
-
+import Slider from "react-slick";
 
 import { useNavigate, useParams } from "react-router-dom";
 
 import axios from 'axios';
 
+
+
+
+
+
 const Section1 = () => {
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 3, 
+        slidesToScroll: 1,
+        autoplay: true, 
+        autoplaySpeed: 3000, 
+        arrows: false, 
+        responsive: [
+            {
+                breakpoint: 1024, 
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 768, 
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    };
+
+
+
     const [isOpen, setIsOpen] = useState(false);
     const id = localStorage.getItem('categoryid')
     const subid = localStorage.getItem('subproductid')
@@ -135,10 +170,10 @@ const Section1 = () => {
     }
     return (
         <>
-            <Container fluid className='ProductBAckgroundImg pt-5'>
+            <Container fluid className='ProductBAckgroundImg p-0'>
                 {/* Product Image Section */}
                 {productimges ? (
-                    <img src={`https://api.antivibrations.com/${productimges.img}`} alt="Product Image" className="img-fluid" />
+                    <img src={`https://api.antivibrations.com/${productimges.img}`} style={{ marginTop: "30px" }} alt="Product Image" className="img-fluid" />
                 ) : (
                     <p>No data available for product image.</p> // Show message if no image is available
                 )}
@@ -216,7 +251,35 @@ const Section1 = () => {
 
                     </Col>
 
-
+                    <Col xs={12} sm={12} md={12} lg={11} xl={11} xxl={11}>
+                        {/* <div className="custom-accordion my-2 p-lg-1 ">
+                            <div
+                                className={`custom-accordion-header cardshadow ${isOpen ? 'active' : ''}`}
+                                onClick={toggleAccordion}
+                                tabIndex={0}
+                            >Function of the valves
+                                <FaChevronDown className={`arrow-icon ${isOpen ? 'rotate' : ''}`} />
+                            </div>
+                            <div className={`custom-accordion-body ${isOpen ? 'show' : ''}`}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                        </div> */}
+                        {/* <div className="custom-accordion p-lg-1">
+                            <div
+                                className={`custom-accordion-header shadow ${isOpen ? 'active' : ''}`}
+                                onClick={toggleAccordion}
+                                tabIndex={0}
+                            >interpretation
+                                <FaChevronDown className={`arrow-icon ${isOpen ? 'rotate' : ''}`} />
+                            </div>
+                        </div> */}
+                    </Col>
                     <Col xs={12} sm={12} md={12} lg={11} xl={11} xxl={11}>
                         {Accardian.map((item) => (
                             <div className="custom-accordion my-2 p-lg-1" key={item.id}>
@@ -256,7 +319,7 @@ const Section1 = () => {
                             <h1 className='fw-bolder textheading' style={{ marginTop: '-0px' }}>similar <span className='highlight'>product</span></h1>
                         </Col>
                     </Row>
-                    <Row className="px-lg-4 mx-lg-4">
+                    {/* <Row className="px-lg-4 mx-lg-4">
                         {ProductCard1.filter((a) => a.id != subid).map((member, index) => (
                             <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={4} className="pt-lg-3">
                                 <Card className="rounded-5 h-100 cardshadow">
@@ -273,7 +336,25 @@ const Section1 = () => {
                                 </Card>
                             </Col>
                         ))}
-                    </Row>
+                    </Row> */}
+                    <Slider {...settings}>
+                        {ProductCard1.filter((a) => a.id !== subid).map((member, index) => (
+                            <div key={index}>
+                                <Card className="rounded-5 h-100 cardshadow m-1">
+                                    <Card.Img variant="top" src={`https://api.antivibrations.com/${member.img}`} alt={member.name} className="px-3 pt-3" />
+                                    <Card.Body>
+                                        <Card.Title className="fw-bolder text-uppercase">{member.name}</Card.Title>
+                                        <Card.Text>{member.title}</Card.Text>
+                                    </Card.Body>
+                                    <div className="d-flex justify-content-end pb-3 pe-4">
+                                        <Button className="rounded-5 border-3 border-0 px-3 py-2 border learn_more" onClick={() => { navigate(`/ProductDetail/${member.slug}`); localStorage.setItem('subproductid', member.id); }}>
+                                            Learn more
+                                        </Button>
+                                    </div>
+                                </Card>
+                            </div>
+                        ))}
+                    </Slider>
                 </Container>
             </>
         </>

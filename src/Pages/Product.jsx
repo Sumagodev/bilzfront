@@ -61,7 +61,7 @@ const Product = () => {
     <>
       {/* Product Image Section */}
       {productimges ? (
-        <img src={`https://api.antivibrations.com/${productimges.img}`} alt="Product Image" className="img-fluid" />
+        <img src={`https://api.antivibrations.com/${productimges.img}`} alt="Product Image" style={{ marginTop: "79px" }} className="img-fluid w-100" />
       ) : (
         <p>No data available for product image.</p> // Show message if no image is available
       )}
@@ -79,10 +79,16 @@ const Product = () => {
         {ProductCard.length > 0 ? (
           <Row>
             {ProductCard.map((member, index) => (
-              <Col xs={12} sm={6} md={6} lg={4} key={index} className='pt-1 pb-3 pe-3'>
-                <Card className='rounded rounded-5 cardshadow'>
-                  <Card.Img variant="top" src={`https://api.antivibrations.com/${member.img}`} alt={member.title} className='pt-3 px-3 rounded-5' />
-                  <Card.Body>
+              <Col xs={12} sm={6} md={6} lg={4} key={index} className='pt-1 pb-5 pe-3'>
+                <Card className='rounded rounded-5 cardshadow' style={{ height: '450px' }}> {/* Fixed card height */}
+                  <Card.Img
+                    variant="top"
+                    src={`https://api.antivibrations.com/${member.img}`}
+                    alt={member.title}
+                    className='pt-3 px-3 rounded-5'
+                    style={{ height: '300px', objectFit: 'cover' }} // Fixed height for the image
+                  />
+                  <Card.Body style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}> {/* Ensuring content fits */}
                     <Card.Title className='fw-bold text-uppercase'>{member.title}</Card.Title>
                     <Card.Text className='text-justify text-dark lh-sm'
                       dangerouslySetInnerHTML={{ __html: member.description }}
@@ -94,6 +100,8 @@ const Product = () => {
                   </div>
                 </Card>
               </Col>
+
+
             ))}
           </Row>
         ) : (
