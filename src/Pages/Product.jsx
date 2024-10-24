@@ -84,11 +84,12 @@ const Product = () => {
                   <Card.Img variant="top" src={`https://api.antivibrations.com/${member.img}`} alt={member.title} className='pt-3 px-3 rounded-5' />
                   <Card.Body>
                     <Card.Title className='fw-bold text-uppercase'>{member.title}</Card.Title>
-                    <Card.Text className='text-justify text-dark lh-sm'>{member.description}</Card.Text>
-                  </Card.Body>
+                    <Card.Text className='text-justify text-dark lh-sm'
+                      dangerouslySetInnerHTML={{ __html: member.description }}
+                    />                  </Card.Body>
                   <div className="d-flex justify-content-end pb-3 pe-4">
-                    <Button className="rounded-5 border-3 border-0 px-3 py-2 border fw-medium learn_more" onClick={() => {navigate(`/ProductDetail/${member.slug}`);localStorage.setItem('subproductid',member.id)}}>
-                      Learn more{member.id}
+                    <Button className="rounded-5 border-3 border-0 px-3 py-2 border fw-medium learn_more" onClick={() => { navigate(`/ProductDetail/${member.slug}`); localStorage.setItem('subproductid', member.id) }}>
+                      Learn more
                     </Button>
                   </div>
                 </Card>

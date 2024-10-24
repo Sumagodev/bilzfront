@@ -16,6 +16,7 @@ const Section1 = () => {
     const [isOpen, setIsOpen] = useState(false);
     const id = localStorage.getItem('categoryid')
     const subid = localStorage.getItem('subproductid')
+    console.log(subid)
     // Toggle accordion state
 
     // State to manage the selected content
@@ -30,20 +31,12 @@ const Section1 = () => {
     const navigate = useNavigate();
 
 
-    const [products, setProducts] = useState([]);
     const [productimges, setProductImages] = useState(null);
-    const [ProductCard, setProductCard] = useState(null);
+    const [ProductCard, setProductCard] = useState([]);
     const [Accardian, setAccardian] = useState([]);
     const [tabDetails, settabDetails] = useState([])
     // Function to fetch all products (if needed for other functionality)
-    const fetchAllProducts = async () => {
-        try {
-            const response = await axios.get('/productName/get');
-            setProducts(response.data.responseData);
-        } catch (error) {
-            console.error('Error fetching all products:', error);
-        }
-    };
+
 
     // Function to fetch the product image by ID
     const fetchProductImages = async (id) => {
@@ -56,16 +49,16 @@ const Section1 = () => {
     };
 
     // Function to fetch product card details by ID
-    const fetchProductDetails = async (id) => {
+    const fetchProductDetails = async (subid) => {
         try {
-            const response = await axios.get(`/productName/getdetails/${id}`);
-            setProductCard(response.data);
+            const response = await axios.get(`/productName/getProductDetailsByProductsubId/${subid}`);
+            setProductCard(response.data); // Ensure that response.data is in the expected format
         } catch (error) {
             console.error('Error fetching product details:', error);
             setProductCard([]); // Reset state if error occurs
-
         }
     };
+
     const fetchAccardianDetails = async (id, subid) => {
         try {
             const response = await axios.get(`/Product_data2/getProductDetailsByProductsubId/${id}/${subid}`);
@@ -107,24 +100,39 @@ const Section1 = () => {
     };
 
     useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            await Promise.all([
 
+                fetchAccardianDetails(id, subid),
+                fetchtabDetails(id, subid),
+                fetchProductDetails(subid),
 
-        fetchProductDetails(id);
+            ]);
+            setLoading(false);
+        };
 
-
-        // Call the combined fetch function
-    }, [id]);
-    // Combined useEffect to call all API functions when the component mounts or `id` changes
-    useEffect(() => {
-
-        fetchAllProducts();
-        fetchProductImages(id);
-        fetchProductDetails(id);
-        fetchAccardianDetails(id, subid);
-        fetchtabDetails(id, subid)
-        fetchProductDetails1(id)
-        // Call the combined fetch function
+        fetchData();
     }, [id, subid]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            await Promise.all([
+
+                fetchProductImages(id),
+                fetchProductDetails1(id)
+            ]);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, [id, subid]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
     return (
         <>
             <Container fluid className='ProductBAckgroundImg pt-5'>
@@ -139,30 +147,34 @@ const Section1 = () => {
                     <Col xs={12} sm={12} md={12} lg={11} xl={11} xxl={11}>
                         <Card className='rounded-5 cardshadow'>
                             <Row>
-                                {
-                                    ProductCard && (
-                                        <>
-                                            <Col xs={12} sm={6} md={6} lg={5} xl={5} xxl={5} className='d-flex justify-content-center mb-md-0'>
-                                                <img src={`https://api.antivibrations.com/${ProductCard.img}`} alt="Product" className='img-fluid' />
-                                            </Col>
-                                            <Col xs={12} sm={6} md={6} lg={7} xl={7} xxl={7} className='px-5 px-md-0'>
-                                                <h1 className='py-3 textheading fw-bolder'>
-                                                    Insulation <span className='highlight'>{ProductCard.title}</span>
-                                                </h1>
-                                                <ul className='pe-md-5 pt-4'>
-                                                    <li>
-                                                        {ProductCard.description}
-                                                    </li>
-                                                </ul>
-                                                <div className='py-3 px-4'>
-                                                    <Button variant="outline-dark" className='py-2 px-4 rounded-5'>
-                                                        Read More
-                                                    </Button>
-                                                </div>
-                                            </Col>
 
-                                        </>
-                                    )
+                                {
+                                    ProductCard.map((ProductCard) => {
+                                        return (
+                                            <>
+                                                <Col xs={12} sm={6} md={6} lg={5} xl={5} xxl={5} className='d-flex justify-content-center mb-md-0'>
+                                                    <img src={`https://api.antivibrations.com/${ProductCard.img}`} alt="Product" className='img-fluid' />
+                                                </Col>
+                                                <Col xs={12} sm={6} md={6} lg={7} xl={7} xxl={7} className='px-5 px-md-0'>
+                                                    <h1 className='py-3 textheading fw-bolder'>
+                                                        Insulation <span className='highlight'>{ProductCard.title}</span>
+                                                    </h1>
+                                                    <ul className='pe-md-5 pt-4'>
+
+                                                        <li dangerouslySetInnerHTML={{ __html: ProductCard.description }}>
+
+                                                        </li>
+                                                    </ul>
+                                                    <div className='py-3 px-4'>
+                                                        <Button variant="outline-dark" className='py-2 px-4 rounded-5'>
+                                                            Read More
+                                                        </Button>
+                                                    </div>
+                                                </Col>
+
+                                            </>
+                                        )
+                                    })
                                 }
                                 <Col sm={12} md={12} lg={12} xl={12} xxl={12} className='d-flex justify-content-center'>
                                     <div className="cardborders py-3 w-75 rounded-5 d-flex flex-column flex-md-row justify-content-evenly align-items-center" style={{ position: 'relative', top: '40px' }}>
@@ -201,83 +213,10 @@ const Section1 = () => {
                                 ) : null
                             )}
                         </Col>
-                        {/* <Col xs={12} sm={12} md={12} lg={11} xl={11} xxl={11}>
-                            {selectedContent === 'description' && (
-                                <Card className='px-lg-5 px-4 py-5 rounded-5 my-5 cardborders cardshadow' id="description">
-                                    <h1 className='textheading'>
-                                        General information on mechanical level <span className='highlight'>control systems</span>
-                                    </h1>
-                                    <Card.Body>
-                                        <ul>
-                                            <li>The delivery is made as a complete set with 3 control valves and all necessary hose connections and connectors for 4 air springs. All components are of course also available individually as spare parts.</li>
-                                            <li>In the LCV variant, the air volume flow can be reduced using the throttle valve if the control system tends to overshoot. A throttle valve can also be installed optionally in the PVM variant.</li>
-                                            <li>In addition to our standard solutions listed here, we also offer special variants with regard to material, flow, accuracy and restoring force.</li>
-                                        </ul>
-                                    </Card.Body>
-                                </Card>
-                            )}
 
-                            {selectedContent === 'technical-data' && (
-                                <Card className='px-lg-5 px-4 py-5 rounded-5 my-5 cardborders cardshadow' id="technical-data">
-                                    <h1 className='textheading'>
-                                        Technical Data <span className='highlight'>for Control Systems</span>
-                                    </h1>
-                                    <Card.Body>
-                                        <ul>
-                                            <li>Input Voltage: 230V AC</li>
-                                            <li>Max Pressure: 10 bar</li>
-                                            <li>Flow Rate: 200 l/min</li>
-                                        </ul>
-                                    </Card.Body>
-                                </Card>
-                            )}
-
-                            {selectedContent === 'general-info' && (
-                                <Card className='px-lg-5 px-4 py-5 rounded-5 my-5 cardborders cardshadow' id="general-info">
-                                    <h1 className='textheading'>
-                                        General Information <span className='highlight'>About Systems</span>
-                                    </h1>
-                                    <Card.Body>
-                                        <ul>
-                                            <li>These systems ensure precision and reliability in mechanical operations.</li>
-                                            <li>Suitable for various industrial applications.</li>
-                                            <li>Robust design for long-term usage.</li>
-                                        </ul>
-                                    </Card.Body>
-                                </Card>
-                            )}
-                        </Col> */}
                     </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={11} xl={11} xxl={11}>
-                        <div className="custom-accordion my-2 p-lg-1 ">
-                            <div
-                                className={`custom-accordion-header cardshadow ${isOpen ? 'active' : ''}`}
-                                onClick={toggleAccordion}
-                                tabIndex={0}
-                            >Function of the valves
-                                <FaChevronDown className={`arrow-icon ${isOpen ? 'rotate' : ''}`} />
-                            </div>
-                            <div className={`custom-accordion-body ${isOpen ? 'show' : ''}`}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-                        </div>
-                        <div className="custom-accordion p-lg-1">
-                            <div
-                                className={`custom-accordion-header shadow ${isOpen ? 'active' : ''}`}
-                                onClick={toggleAccordion}
-                                tabIndex={0}
-                            >interpretation
-                                <FaChevronDown className={`arrow-icon ${isOpen ? 'rotate' : ''}`} />
-                            </div>
-                        </div>
-                    </Col>
+
                     <Col xs={12} sm={12} md={12} lg={11} xl={11} xxl={11}>
                         {Accardian.map((item) => (
                             <div className="custom-accordion my-2 p-lg-1" key={item.id}>
@@ -293,7 +232,9 @@ const Section1 = () => {
 
                                 {/* Accordion Body */}
                                 <div className={`custom-accordion-body ${openAccordionId === item.id ? 'show' : ''}`}>
-                                    {item.description} {/* Accordion content from JSON */}
+                                    {/* {item.description} Accordion content from JSON */}
+
+                                    <img src={item.description} alt="" />
                                 </div>
                             </div>
                         ))}
@@ -325,8 +266,8 @@ const Section1 = () => {
                                         <Card.Text>{member.title}</Card.Text>
                                     </Card.Body>
                                     <div className="d-flex justify-content-end pb-3 pe-4">
-                                        <Button className="rounded-5 border-3 border-0 px-3 py-2 border learn_more" onClick={() => {navigate(`/ProductDetail/${member.slug}`);localStorage.setItem('subproductid',member.id)}}>
-                                            Learn more
+                                        <Button className="rounded-5 border-3 border-0 px-3 py-2 border learn_more" onClick={() => { navigate(`/ProductDetail/${member.slug}`); localStorage.setItem('subproductid', member.id) }}>
+                                            Learn more{member.id}
                                         </Button>
                                     </div>
                                 </Card>
