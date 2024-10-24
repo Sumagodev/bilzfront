@@ -1,0 +1,90 @@
+/* ============ Section1 ============ */
+.banner-img {
+    max-width: 100% !important;
+    background-size: cover;
+}
+
+.AboutUsBackground {
+    /* max-width: 100% !important;
+    background-image: url('../../Assets/Images/AboutUs/Aboutus.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+    /* max-width: 100% !important;
+  background: url("../../Assets/Images/AboutUs/Aboutus.png")
+    no-repeat center center;
+  -webkit-background-size: cover, contain;
+  -moz-background-size: cover, contain;
+  -o-background-size: cover, contain;
+  background-size: cover, contain; */
+    
+}
+.bg{
+    margin-top: -5px!important;
+}
+
+.Ourvalue {
+    background: #D4FFA3;
+}
+
+.mission {
+    background: #1C949D;
+}
+
+.text-mission {
+    color: #D4FFA3; 
+}
+
+.vision {
+    background: #0E3B60;
+}
+
+.text-vision {
+    color: #94F8FF;
+}
+
+.cardicon {
+    width: 35%;
+    margin-top: -35px;
+}
+
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px) {
+
+    .img-about{
+        height: 500px!important;
+    }
+}
+.card-fixed-height {
+    height: 400px!important;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-icon-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 576px) { /* Mobile devices */
+    .image-center-mobile {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 576px) { /* Mobile devices */
+    .mobc {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  
+  .overflow-container {
+    position: relative;
+  }
+  

@@ -1,0 +1,112 @@
+.banner-img {
+  max-width: 100% !important;
+  background-size: cover;
+}
+
+.imgmain {
+  margin-top: -38px;
+  margin-bottom: 20px;
+  margin-left: 12px;
+}
+
+.main {
+  display: inline-block;
+  padding: 18px;
+  background-color: var(--color-darkslategray-100);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.cardshadow1 {
+  box-shadow: 7px 4px 20px 12px #00000040;
+  /* box-shadow:0 4px 8px rgb(0 0 0 / 50%); */
+}
+
+.image-center-mobile {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+@media (max-width: 576px) {
+  .image-center-mobile {
+    justify-content: center;
+  }
+}
+
+
+
+/* ============ Section3 ============ */
+
+#mySkills {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#skillsContainer {
+  border-radius: 45px;
+}
+
+.tab {
+  overflow: hidden;
+  background: var(--color-darkslategray-100);
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.separator {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tab button {
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 50%;
+  color: var(--color-white);
+  background: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 30px;
+  transition: 0.3s;
+}
+
+.tab button.active {
+  color: #D7FAAD;
+}
+
+.tabContent {
+  background: var(--color-white);
+  display: block;
+  padding: 10px 15px;
+  border: 2px solid #c4c4c4;
+  border-top: none;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  animation: fadeEffect 0.5s;
+  background: linear-gradient(180.64deg, #FFFFFF 1.23%, #E1F9C6 99.44%);
+
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.shadows {
+  box-shadow: rgb(204 219 232 / 49%) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}

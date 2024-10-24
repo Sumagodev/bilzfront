@@ -1,0 +1,66 @@
+/* ============ Section1 ============ */
+.servicebg {
+  max-width: 100% !important;
+  background: url("../../Images/Service/ReachusBackgroundImg.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: -5px;
+}
+
+/* ============ Section3 ============ */
+.analyses {
+  max-width: 100% !important;
+  background: url("../../Images/Service/analyses.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 767px) {
+  .furthercard{
+    margin: 0px 40px 0!important;
+  }
+}
+/* ============ SectionPDF ============ */
+.bg-pdfimg-new {
+  max-width: 100% !important;
+  background: url("../../Images/ServiceDownloadPdf/PDFBackgroundImg.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.datasheet {
+  background-color: var(--color-white);
+  border-radius: 50px;
+  margin-left: 30!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-icon {
+  background-color: var(--color-white);
+  border-radius: 50%;
+  margin-left: -12px;
+  padding: 12px;
+  width: 45%;
+  border: 5px solid var(--border-color-litwhite) !important;
+}
+.cardtext{
+  margin-left: -5rem;
+}
+.download-icon {
+  width: 20px;
+  margin-left: 4px;
+}
+@media only screen and (min-width: 992px) {
+  .mob-datasheet{
+    width:75%!important;
+    
+  }
+}

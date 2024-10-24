@@ -1,0 +1,39 @@
+.bg-SolutionApplication {
+    max-width: 100% !important;
+    background: url("../../Images/SolutionApplication/BackgroundImg.png") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .application-tab {
+    background: var(--color-darkslategray-100)!important;
+    border-radius: 30px!important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)!important;
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus {
+    color: var(--color-yellowgreen-100)!important;
+  }
+  
+  .active-link {
+    color: var(--color-yellowgreen-100) !important;
+  
+  }
+  
+  .cardtitle {
+    font-family: var(--font-century-gothic) !important;
+    font-size: 15px !important;
+  }
+  
+  .navbar-custom {
+    width: 100%; 
+  }
+  
+  .nav-link-custom {
+    text-align: center;   
+  }
+  
+  

@@ -1,0 +1,50 @@
+/* ============ Section1 ============ */
+.bg-about {
+  max-width: 100% !important;
+  background: url("../../Assets/Images/Home/BackgroundImg.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  min-height: 600px; 
+}
+
+/* ============ Section3 ============ */
+.ProductBackgroundWithImage {
+  background-image: url('../Images/Home/ProductBackground.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding: 0px;
+  bottom:0px;
+  height: 10%;
+}
+/* Add this to your Home.css */
+.cardshadow5 {
+  min-height: 500px; /* Default minimum height */
+  max-height: 500px; /* Maximum height to maintain consistency */
+}
+
+@media (max-width: 1024px) {
+  .cardshadow5 {
+      min-height: 500px; /* Adjust height for tablets */
+      max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardshadow5 {
+      min-height: 500px; /* Adjust height for mobile */
+      max-height: 500px;
+  }
+}
+
+.righticon{
+  font-size: 30px;
+}
+.righticon1{
+  border-radius: 20px!important;
+}
+/* ============ Common CSS ============ */
+.cardshadows {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 50%);
+}

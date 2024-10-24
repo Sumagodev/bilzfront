@@ -1,0 +1,41 @@
+/* src/components/FloatingIcons.css */
+.floating-icons {
+  position: fixed;
+  bottom: 9px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1;
+}
+
+.iconz {
+  font-size: 3.5rem;
+  color: white;
+  background-color: #25d366; /* Default WhatsApp color */
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.whatsapp {
+  background-color: #25d366;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+    /* box-shadow: none; */
+  }
+  50% {
+    opacity: 0.9;
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
+  }
+}

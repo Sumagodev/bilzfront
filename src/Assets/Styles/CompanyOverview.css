@@ -1,0 +1,21 @@
+.backgroundsection1 {
+    max-width: 100% !important;
+    height: 25%;
+    margin-top: -5px;
+    background: url("../../Assets/Images/CompanyOverview/companybackgroundImg.png") no-repeat center center;
+    -webkit-background-size: cover, contain;
+    -moz-background-size: cover, contain;
+    -o-background-size: cover, contain;
+    background-size: cover, contain;
+    background-position: center, bottom right;
+}
+.further_analyses {
+    max-width: 100% !important;
+    height: 35%;
+    background: url("../../Assets/Images/CompanyOverview/Further_analyses.png") no-repeat center center;
+    -webkit-background-size: cover, contain;
+    -moz-background-size: cover, contain;
+    -o-background-size: cover, contain;
+    background-size: cover, contain;
+    background-position: center, bottom right;
+}

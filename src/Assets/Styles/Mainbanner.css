@@ -1,0 +1,189 @@
+.banner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/contact us.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .servicebanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/SERVICE.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .pdfbanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/download.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .applicationbanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/Application.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .solutionbanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/SOLUTION.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .Newbanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/News.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+  .Aboutbanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/about_us.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+  .Careerbanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../Assets/Images/Banner/Career.png");
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+  .probanner-img {
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    /* background-image: url("../../Assets/Images/Banner/insulation pads.png"); */
+    height: auto;
+    aspect-ratio: 2/1;
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+  @media (max-width: 768px) {
+    .banner-text {
+      left: 2em !important;
+      top: 1em !important;
+      font-size: 2rem; 
+    }
+    .banner-text h1 {
+      font-size: 4rem !important; 
+    }
+    .banner-text h3 {
+      font-size: 1.5rem !important; 
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .banner-text {
+      left: 4em !important;
+      top: 4em !important;
+    }
+    .banner-text h1 {
+      font-size: 5rem !important; /* Font size for tablets */
+    }
+    .banner-text h3 {
+      font-size: 3rem !important; /* Font size for tablets */
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .banner-text {
+      left: 10em !important;
+      top: 10em !important;
+    }
+    .banner-text h1 {
+      font-size: 7rem !important; /* Default large font size */
+    }
+    .banner-text h3 {
+      font-size: 4rem !important; /* Default large font size */
+    }
+  }
+  /* ====================== */
+  

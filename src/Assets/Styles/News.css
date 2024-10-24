@@ -1,0 +1,8 @@
+.NewCard {
+    max-width: 100% !important;
+    background: url("../Images/News/Background.png") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

@@ -1,0 +1,24 @@
+.banner-carousel {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .banner-img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 600px; /* Adjust based on preference */
+  }
+  
+  /* Optional media queries for finer control */
+  @media (max-width: 768px) {
+    .banner-img {
+      max-height: 300px; /* Set smaller height for mobile */
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .banner-img {
+      max-height: 700px; /* Larger height for big screens */
+    }
+  }
+  

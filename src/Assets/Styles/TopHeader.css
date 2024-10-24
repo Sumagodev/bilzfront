@@ -1,0 +1,27 @@
+.company-info {
+    background-color: var(--color-white);
+    height: auto;
+    position: relative; 
+    /* position: fixed; */
+  }
+  
+  .company-logo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #05313E;
+    width: 100%!important;
+    height: 100%;
+    z-index: 1; 
+  }
+  
+  .company-img {
+    position: relative;
+    z-index: 2; 
+    max-width: 100%;
+    height: 80px;
+    padding-bottom: 10px;
+    display: block;
+    margin: 0 auto;
+  }
+  
