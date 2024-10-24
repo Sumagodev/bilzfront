@@ -8,8 +8,8 @@ import axios from 'axios';
 
 const Product = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-
+  // const { id } = useParams();
+  const id = localStorage.getItem('categoryid')
   const [products, setProducts] = useState([]);
   const [productimges, setProductImages] = useState(null);
   const [ProductCard, setProductCard] = useState([]);
@@ -87,8 +87,8 @@ const Product = () => {
                     <Card.Text className='text-justify text-dark lh-sm'>{member.description}</Card.Text>
                   </Card.Body>
                   <div className="d-flex justify-content-end pb-3 pe-4">
-                    <Button className="rounded-5 border-3 border-0 px-3 py-2 border fw-medium learn_more" onClick={() => navigate("/ProductDetail")}>
-                      Learn more
+                    <Button className="rounded-5 border-3 border-0 px-3 py-2 border fw-medium learn_more" onClick={() => {navigate(`/ProductDetail/${member.slug}`);localStorage.setItem('subproductid',member.id)}}>
+                      Learn more{member.id}
                     </Button>
                   </div>
                 </Card>

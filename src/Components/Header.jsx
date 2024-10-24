@@ -169,9 +169,9 @@ function SidebarContent({ openDropdown, handleDropdownToggle }) {
             products.map((a) => {
               return (
                 <>
-                  <h5 onClick={()=>navigate(`/Product/${a.id}`)}>
+                  <h5 onClick={() => {navigate(`/Product/${a.slug}`);localStorage.setItem('categoryid',a.id)}}>
                     <NavLink
-                      
+
                       className={({ isActive }) =>
                         isActive ? 'text-decoration-none link active-link' : 'text-decoration-none link'
                       }
@@ -184,7 +184,7 @@ function SidebarContent({ openDropdown, handleDropdownToggle }) {
                         alt="Leveling Elements"
                         style={{ marginRight: '10px', width: '9px' }}
                       />
-                     {a.productName}
+                      {a.productName}
                     </NavLink>
                   </h5>
                 </>

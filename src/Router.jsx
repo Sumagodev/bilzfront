@@ -52,7 +52,7 @@ export const Router = () => {
                             <Route path='/Solutiondetails/:id' element ={<Solution />} />
                             <Route path='/solutionapplicationdetails/:id' element ={<SolutionApplicationDetails />} />
                             <Route path='/Product/:id' element={<Product />} />
-                            <Route path='/ProductDetail' element={<ProductDetail />} />
+                            <Route path='/ProductDetail/:slug' element={<ProductDetail />} />
                             <Route path='/SolutionOverview' element={<SolutionOverview />} />
                             <Route path='/SolutionApplication' element={<SolutionApplication />} />
                             <Route path='/Service' element={<Service />} />
