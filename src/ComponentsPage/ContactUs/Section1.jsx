@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
 import '../../Assets/Styles/ContactUs.css'
@@ -37,7 +37,7 @@ const Section1 = () => {
         setter(e.target.value);
         // Clear the error when the user types valid data
         if (e.target.value.trim()) {
-            setErrors((prev) => ({ ...prev, [e.target.name]: undefined })); 
+            setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
         }
     };
 
@@ -283,7 +283,36 @@ const Section1 = () => {
             }
         }
     };
+    const [selectedState, setSelectedState] = useState('');
+    const [statesdata, setStatesData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
 
+    const states = [
+        'Gujarat', 'Delhi NCR', 'Rest of India',
+        // Add more states as needed
+    ];
+
+    const fetchAllStates = async () => {
+        try {
+            const response = await axios.get('/stateinfo/get');
+            setStatesData(response.data.responseData);
+        } catch (error) {
+            console.error('Error fetching all states:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAllStates();
+    }, []);
+
+    const handleStateChange = (e) => {
+        const selected = e.target.value;
+        setSelectedState(selected);
+
+        // Filter statesdata based on selected state
+        const filtered = statesdata.filter((item) => item.statename === selected);
+        setFilteredData(filtered);
+    };
     return (
         <>
             <Container fluid className='Section1BackgroundImg'>
@@ -295,16 +324,31 @@ const Section1 = () => {
                                 <p className='fw-bolder px-3'>Distributor India</p>
                                 <Row>
                                     <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                                        <p>Please enter a valid, five-digit postal code and confirm with the enter key</p>
-                                        <Button className="rounded-5" variant="success" style={{ background: '#82B547', border: 'none' }}>
-                                            Enter your zip Code
-                                        </Button>
+                                        <div>
+                                            <h2>Select your state</h2>
+                                            <select value={selectedState} onChange={handleStateChange}>
+                                                <option value="">Select a state</option>
+                                                {states.map((state, index) => (
+                                                    <option key={index} value={state}>
+                                                        {state}
+                                                    </option>
+                                                ))}
+                                            </select>
+
+
+                                        </div>
                                     </Col>
                                     <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                                        <p>If you do not find the country you are looking for in the selection, please contact our head office.</p>
-                                        <Button className="rounded-5" variant="success" style={{ background: '#82B547', border: 'none', width: '50%' }}>
-                                            India
-                                        </Button>
+                                        <div>
+                                            {filteredData.map((record) => (
+                                                <div key={record.id} style={{ margin: "10px 0", padding: "10px", border: "1px solid #ddd" }}>
+                                                    <h3>{record.company_name}</h3>
+                                                    <p><strong>Phone:</strong> {record.phone}</p>
+                                                    <p><strong>Location:</strong> {record.location}</p>
+                                                    <p><strong>Address:</strong> {record.address}</p>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </Col>
                                 </Row>
                             </Card.Body>
@@ -322,7 +366,7 @@ const Section1 = () => {
                                         // onClick={() => handleShow('distributors')}
                                         style={{ cursor: 'pointer' }}
                                     /> Distributors Form
-                                </li> 
+                                </li>
                                 <li className='list-group-item border-0 fw-bolder' style={{ cursor: 'pointer' }} onClick={() => handleShow('contact')}>
                                     <img
                                         src={Contact}
